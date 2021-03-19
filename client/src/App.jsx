@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./App.css";
 
 //components
 import TextBox from "./components/TextBox";
 import Input from "./components/Input";
+import Navbar from "./components/Navbar";
 
 function App() {
     const wordlist = require("./wordlist.json");
@@ -17,7 +17,7 @@ function App() {
         return str;
     };
 
-    const [text, setText] = useState(getNewText(30));
+    const [text, setText] = useState(getNewText(10));
 
     //use states
     const [input, setInput] = useState("");
@@ -25,7 +25,7 @@ function App() {
     return (
         <div className="App">
             <header>
-                <h1>Typing Test</h1>
+                <Navbar />
             </header>
             <TextBox text={text} input={input} />
             <Input

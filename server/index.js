@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(
     cors({
         origin: [
+            "http://localhost:3000",
             "http://192.168.86.147:3000",
             "https://snippetmanager21.netlify.app",
         ],
@@ -22,6 +23,9 @@ app.use(
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
+// SETUP ROUTERS
+app.use("/test", require("./routers/testRouter"));
 
 // CONNECT TO MONGODB
 

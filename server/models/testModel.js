@@ -1,7 +1,8 @@
+const router = require("express").Router();
 const mongoose = require("mongoose");
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const snippetSchema = new mongoose.Schema(
+const testSchema = new mongoose.Schema(
     {
         wpm: { type: Number },
         accuracy: { type: Number },
@@ -12,6 +13,6 @@ const snippetSchema = new mongoose.Schema(
     }
 );
 
-const Snippet = mongoose.model("snippet", snippetSchema);
+const Test = mongoose.model("test", testSchema);
 
-module.exports = Snippet;
+module.exports = Test;

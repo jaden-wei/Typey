@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState, useRef } from "react";
+import domain from "../util/domain";
 
 const Input = ({ text, setText, input, setInput, getNewText }) => {
     const [time, setTime] = useState(0);
@@ -10,13 +12,23 @@ const Input = ({ text, setText, input, setInput, getNewText }) => {
 
         if (status === 0) startTimer();
         if (e.target.value.length >= text.length) {
+            saveData();
             stopTimer();
             document.getElementById("input-box").disabled = true;
         }
     };
 
+    const saveData = async () => {
+        const testData = {
+            accuracy: Math.round((100 * countCorrect()) / input.length),
+            wpm: Math.round((countCorrect() * 10) / time)
+        }
+        await axios.post(`${domain}/test/`, testData);
+        console.log('saved new test data');
+    }
+
     var seconds = 0;
-    const startTimer = async () => {
+    const startTimer = () => {
         setStatus(1);
         interv.current = setInterval(() => {
             seconds++;
@@ -36,7 +48,7 @@ const Input = ({ text, setText, input, setInput, getNewText }) => {
 
     const resetInput = () => {
         setInput("");
-        setText(getNewText(30));
+        setText(getNewText(10));
         document.getElementById("input-box").value = "";
         clearInterval(interv.current);
         setStatus(0);
@@ -50,7 +62,7 @@ const Input = ({ text, setText, input, setInput, getNewText }) => {
             <input
                 onChange={inputHandler}
                 type="text"
-                autocomplete="off"
+                autoComplete="off"
                 placeholder="Start typing..."
                 id="input-box"
             />
