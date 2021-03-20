@@ -4,6 +4,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 // COMPONENTS
 import Home from "./components/home/Home";
 import Navbar from "./components/misc/Navbar";
+//import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
+import Login from "./components/auth/Login";
 
 function Router() {
     return (
@@ -14,10 +17,10 @@ function Router() {
                     <Home />
                 </Route>
                 <Route path="/login">
-                    <p>Login</p>
+                    <Login />
                 </Route>
                 <Route path="/register">
-                    <p>Register</p>
+                    <Register />
                 </Route>
             </Switch>
         </BrowserRouter>

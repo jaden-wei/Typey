@@ -11,13 +11,10 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
+
 app.use(
     cors({
-        origin: [
-            "http://localhost:3000",
-            "http://192.168.86.147:3000",
-            "https://snippetmanager21.netlify.app",
-        ],
+        origin: "http://localhost:3000",
         credentials: true,
     })
 );
@@ -32,7 +29,6 @@ app.use("/test", require("./routers/testRouter"));
 app.use("/auth", require("./routers/userRouter"));
 
 // CONNECT TO MONGODB
-
 mongoose.connect(
     process.env.CONNECTION_STRING,
     {

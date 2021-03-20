@@ -1,13 +1,26 @@
 @import "../../styling/mixins.scss";
 
 .navbar {
-    min-height: 3rem;
-    width: 30%;
+    background: white;
+    margin: 0;
+    min-height: 4rem;
+    width: 100%;
     min-width: 40vh;
     
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    .logo {
+        margin-left: 2vh;
+    }
+
+    .navbar-tabs {
+        min-width: 20vh;
+        width: 30%;
+        display:flex;
+        justify-content: space-around;
+    }
 
     a {
         @include lnk();

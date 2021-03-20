@@ -1,7 +1,11 @@
 @import "../../styling/mixins.scss";
 
 .home {
-    margin-top: 10vh;
+    width: 80%;
+    background-color: rgb(240, 240, 240);
+    margin-top: 5vh;
+    padding-top: 5vh;
+    border-radius: 5px;
 
     display: flex;
     flex-direction: column;
@@ -10,12 +14,14 @@
     .text-box,
     form {
         min-height: 10vh;
-        width: 60%;
+        width: 80%;
 
         border-radius: 8px;
-        background: white;
+        background: rgb(240, 240, 240);
         font-size: 1rem;
         padding: 15px;
+        letter-spacing: 0.8px;
+        line-height: 2.5vh;
     }
 
     .input-container {
@@ -28,11 +34,13 @@
     }
 
     #input-box {
-        width: 60%; 
+        width: 80%;
         height: 2vh;
         border: none;
         outline: none;
         border-radius: 8px;
+        background: rgb(240, 240, 240);
+
         font-family: "Poppins", sans-serif;
         font-size: 1rem;
         padding: 15px;
@@ -56,7 +64,8 @@
     }
 
     .toolbar-container {
-        width: 60%;
+        width: 80%;
+        padding: 0 15px;
     }
 
     .toolbar {
@@ -66,8 +75,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 1rem;
-        
+        font-size: 0.8rem;
+
         .reset-btn {
             height: 2vh;
             @include btn();

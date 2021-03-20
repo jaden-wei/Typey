@@ -17,7 +17,7 @@ export default function Home() {
         return str;
     };
 
-    const [text, setText] = useState(getNewText(10));
+    const [text, setText] = useState(getNewText(60));
 
     //use states
     const [input, setInput] = useState("");

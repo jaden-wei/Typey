@@ -4,6 +4,7 @@ const auth = require("../middleware/auth");
 
 //get test data
 router.get("/", auth, async (req, res) => {
+    console.log('hello');
     try {
         const data = await Test.find({ user: req.user });
         res.json(data);
@@ -20,12 +21,13 @@ router.post("/", auth, async (req, res) => {
         const newTest = new Test({
             wpm,
             accuracy,
-            user: req.body.user,
+            user: req.user,
         });
 
         const savedTest = await newTest.save();
 
         res.json(savedTest);
+        console.log('saved test data');
     } catch (err) {
         res.status(500).send();
     }

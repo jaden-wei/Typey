@@ -1,6 +1,17 @@
 body {
     width: 100%;
-    background-image: linear-gradient(to top, #e0bb91 0%, #eedec5 100%);
+    margin: 0;
+    padding: 0;
+
+    background-image: linear-gradient(to top, #e4ddd6 0%, #dfdfdf 100%);
     font-family: "Poppins", sans-serif;
     min-height: 100vh;
 }
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+

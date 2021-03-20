@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import domain from "../../../util/domain";
+import UserContext from "../../../context/UserContext";
 
 const Input = ({ text, setText, input, setInput, getNewText }) => {
     const [time, setTime] = useState(0);
@@ -9,9 +10,13 @@ const Input = ({ text, setText, input, setInput, getNewText }) => {
     const [averageAccuracy, setAverageAccuracy] = useState();
     const interv = useRef(null);
 
+    const { user } = useContext(UserContext);
+
     useEffect(() => {
-        updateAverages();
-    }, []);
+        if (user) {
+            updateAverages();
+        }
+    }, [user]);
 
     const inputHandler = (e) => {
         setInput(e.target.value);
@@ -37,8 +42,12 @@ const Input = ({ text, setText, input, setInput, getNewText }) => {
     };
 
     const updateAverages = async () => {
-        const allTests = await (await axios.get(`${domain}/test/`)).data;
-        console.log(allTests);
+        if (!user) {
+            setAverageWpm("Please login to use this feature");
+            setAverageAccuracy("Please login to use this feature");
+        }
+        const allTests = await (await axios.get(`${domain}/test`)).data;
+
         let totalWpm = 0;
         let totalAccuracy = 0;
         for (let testIndex = 0; testIndex < allTests.length; testIndex++) {
@@ -116,10 +125,16 @@ const Input = ({ text, setText, input, setInput, getNewText }) => {
                     </button>
                 </div>
             </div>
-            <div className="averageData">
-                <p>Average WPM: {averageWpm}</p>
-                <p>Average Accuracy: {averageAccuracy}</p>
-            </div>
+            {user !== null ? (
+                <div className="averageData">
+                    <p>Average WPM: {averageWpm}</p>
+                    <p>Average Accuracy: {averageAccuracy}</p>
+                </div>
+            ) : (
+                <div className="averageData">
+                    <p>Please log in to save data</p>
+                </div>
+            )}
         </div>
     );
 };
