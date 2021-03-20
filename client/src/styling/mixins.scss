@@ -1,0 +1,23 @@
+@mixin lnk() {
+    color: black;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    text-decoration: unset;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+@mixin btn() {
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    box-sizing: unset;
+
+    &:hover {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
+}

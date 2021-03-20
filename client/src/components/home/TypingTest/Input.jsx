@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useRef } from "react";
-import domain from "../util/domain";
+import domain from "../../../util/domain";
 
 const Input = ({ text, setText, input, setInput, getNewText }) => {
     const [time, setTime] = useState(0);
@@ -63,7 +63,7 @@ const Input = ({ text, setText, input, setInput, getNewText }) => {
                 onChange={inputHandler}
                 type="text"
                 autoComplete="off"
-                placeholder="Start typing..."
+                placeholder="Click here to typing..."
                 id="input-box"
             />
             <div className="toolbar-container">

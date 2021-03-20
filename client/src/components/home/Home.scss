@@ -1,0 +1,76 @@
+@import "../../styling/mixins.scss";
+
+.home {
+    margin-top: 10vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .text-box,
+    form {
+        min-height: 10vh;
+        width: 60%;
+
+        border-radius: 8px;
+        background: white;
+        font-size: 1rem;
+        padding: 15px;
+    }
+
+    .input-container {
+        margin-top: 1vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #input-box {
+        width: 60%; 
+        height: 2vh;
+        border: none;
+        outline: none;
+        border-radius: 8px;
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
+        padding: 15px;
+    }
+
+    .current {
+        background-color: rgb(255, 247, 179);
+        text-decoration: underline;
+    }
+
+    .incorrect {
+        color: red;
+    }
+
+    .correct {
+        color: green;
+    }
+
+    .timer-box {
+        align-self: auto;
+    }
+
+    .toolbar-container {
+        width: 60%;
+    }
+
+    .toolbar {
+        margin-top: 1vh;
+        width: 60%;
+        float: right;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1rem;
+        
+        .reset-btn {
+            height: 2vh;
+            @include btn();
+        }
+    }
+}
