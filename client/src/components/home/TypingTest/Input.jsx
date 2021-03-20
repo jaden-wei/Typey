@@ -1,20 +1,11 @@
 import axios from "axios";
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useRef } from "react";
 import domain from "../../../util/domain";
-import UserContext from "../../../context/UserContext";
 
-const Input = ({ text, setText, input, setInput, getNewText }) => {
+const Input = ({ text, setText, input, setInput, getNewText, updateAverages }) => {
     const [time, setTime] = useState(0);
     const [status, setStatus] = useState(0);
-    const [averageWpm, setAverageWpm] = useState();
-    const [averageAccuracy, setAverageAccuracy] = useState();
     const interv = useRef(null);
-
-    const { user } = useContext(UserContext);
-
-    useEffect(() => {
-        updateAverages();
-    }, [user]);
 
     const inputHandler = (e) => {
         setInput(e.target.value);
@@ -37,25 +28,6 @@ const Input = ({ text, setText, input, setInput, getNewText }) => {
         await updateAverages();
 
         console.log("saved new test data");
-    };
-
-    const updateAverages = async () => {
-        if (!user) {
-            setAverageWpm("Please login to use this feature");
-            setAverageAccuracy("Please login to use this feature");
-        }
-        const allTests = await (await axios.get(`${domain}/test`)).data;
-
-        let totalWpm = 0;
-        let totalAccuracy = 0;
-        for (let testIndex = 0; testIndex < allTests.length; testIndex++) {
-            totalWpm += allTests[testIndex].wpm;
-            totalAccuracy += allTests[testIndex].accuracy;
-        }
-        setAverageWpm(Math.round((totalWpm * 10) / allTests.length) / 10);
-        setAverageAccuracy(
-            Math.round((totalAccuracy * 10) / allTests.length) / 10
-        );
     };
 
     var seconds = 0;
@@ -123,16 +95,6 @@ const Input = ({ text, setText, input, setInput, getNewText }) => {
                     </button>
                 </div>
             </div>
-            {user !== null ? (
-                <div className="averageData">
-                    <p>Average WPM: {averageWpm}</p>
-                    <p>Average Accuracy: {averageAccuracy}</p>
-                </div>
-            ) : (
-                <div className="averageData">
-                    <p>Please log in to save data</p>
-                </div>
-            )}
         </div>
     );
 };
