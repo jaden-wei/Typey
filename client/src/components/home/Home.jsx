@@ -52,20 +52,24 @@ export default function Home() {
 
     return (
         <div className="home">
-            <TextBox text={text} input={input} />
-            <Input
-                text={text}
-                setText={setText}
-                input={input}
-                setInput={setInput}
-                getNewText={getNewText}
-                updateAverages={updateAverages}
-            />
-            <Data
-                updateAverages={updateAverages}
-                averageWpm={averageWpm}
-                averageAccuracy={averageAccuracy}
-            />
+            <div className="test-box">
+                <TextBox text={text} input={input} />
+                <Input
+                    text={text}
+                    setText={setText}
+                    input={input}
+                    setInput={setInput}
+                    getNewText={getNewText}
+                    updateAverages={updateAverages}
+                />
+            </div>
+            <div className="data-box">
+                <Data
+                    updateAverages={updateAverages}
+                    averageWpm={averageWpm}
+                    averageAccuracy={averageAccuracy}
+                />
+            </div>
         </div>
     );
 }

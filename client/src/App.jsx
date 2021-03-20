@@ -1,5 +1,5 @@
 import React from "react";
-import "./styling/App.scss";
+import "./style/App.scss";
 import { UserContextProvider } from "./context/UserContext";
 
 //components
