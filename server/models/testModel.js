@@ -6,7 +6,7 @@ const testSchema = new mongoose.Schema(
     {
         wpm: { type: Number },
         accuracy: { type: Number },
-        //user: { type: ObjectId, required: true },
+        user: { type: ObjectId, required: true },
     },
     {
         timestamps: true,

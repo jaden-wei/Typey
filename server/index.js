@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
 
 dotenv.config();
 
@@ -21,11 +22,14 @@ app.use(
     })
 );
 
+app.use(cookieParser());
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
 // SETUP ROUTERS
 app.use("/test", require("./routers/testRouter"));
+app.use("/auth", require("./routers/userRouter"));
 
 // CONNECT TO MONGODB
 
