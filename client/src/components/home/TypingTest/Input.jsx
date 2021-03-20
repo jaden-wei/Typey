@@ -13,9 +13,7 @@ const Input = ({ text, setText, input, setInput, getNewText }) => {
     const { user } = useContext(UserContext);
 
     useEffect(() => {
-        if (user) {
-            updateAverages();
-        }
+        updateAverages();
     }, [user]);
 
     const inputHandler = (e) => {
