@@ -53,7 +53,7 @@ const Input = ({ text, setText, input, setInput, getNewText, updateAverages }) =
 
     const resetInput = () => {
         setInput("");
-        setText(getNewText(30));
+        setText(getNewText(50));
         document.getElementById("input-box").value = "";
         clearInterval(interv.current);
         setStatus(0);

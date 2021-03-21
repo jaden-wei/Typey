@@ -45,7 +45,7 @@ export default function Home() {
         );
     };
 
-    const [text, setText] = useState(getNewText(60));
+    const [text, setText] = useState(getNewText(50));
 
     //use states
     const [input, setInput] = useState("");
