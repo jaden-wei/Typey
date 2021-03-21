@@ -1,15 +1,22 @@
 @import "../../../style/mixins.scss";
 
-.test-box {
+.test-container {
     width: 80%;
     background-color: rgb(240, 240, 240);
     margin-top: 5vh;
     padding-top: 5vh;
+    padding-bottom: 3vh;
     border-radius: 5px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
+    0 2px 2px rgba(0,0,0,0.12), 
+    0 4px 4px rgba(0,0,0,0.12), 
+    0 8px 8px rgba(0,0,0,0.12),
+    0 16px 16px rgba(0,0,0,0.12);
 
     .text-box,
     form {
@@ -20,8 +27,8 @@
         background: rgb(240, 240, 240);
         font-size: 1rem;
         padding: 15px;
-        letter-spacing: 0.8px;
-        line-height: 2.5vh;
+        letter-spacing: 1.75px;
+        line-height: 3vh;
     }
 
     .input-container {
@@ -71,7 +78,6 @@
     .toolbar {
         margin-top: 1vh;
         width: 60%;
-        float: right;
         display: flex;
         justify-content: space-between;
         align-items: center;

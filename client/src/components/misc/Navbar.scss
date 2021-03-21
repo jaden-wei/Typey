@@ -1,28 +1,43 @@
 @import "../../style/mixins.scss";
 
-.navbar {
-    background: white;
+.navbar-container {
+    background: rgb(255, 255, 255);
     margin: 0;
     min-height: 4rem;
     width: 100%;
-    min-width: 40vh;
-    
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 
-    .logo {
-        margin-left: 2vh;
-    }
+    .navbar {
+        width: 80%;
+        min-width: 40vh;
+        height: 100%;
+        min-height: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-    .navbar-tabs {
-        min-width: 20vh;
-        width: 30%;
-        display:flex;
-        justify-content: space-around;
-    }
+        .logout-btn {
+            margin-left: auto;
+            @include btn();
+            background: unset;
+            color: black;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
 
-    a {
-        @include lnk();
+        .navbar-tabs {
+            min-width: 20vh;
+            width: 20%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        a {
+            @include lnk();
+        }
     }
 }

@@ -15,19 +15,25 @@ export default function Navbar() {
     };
 
     return (
-        <div className="navbar">
-            <div className="logo">
-                <Link to="/">Typing Test</Link>
-            </div>
-            <div className="navbar-tabs">
-                {user === null ? (
-                    <>
-                        <Link to="/login">Login</Link>
-                        <Link to="/register">Register</Link>
-                    </>
-                ) : (
-                    user && <button onClick={logOut}>Log out</button>
-                )}
+        <div className="navbar-container">
+            <div className="navbar">
+                <div className="logo">
+                    <Link to="/">Typing Test</Link>
+                </div>
+                <div className="navbar-tabs">
+                    {user === null ? (
+                        <>
+                            <Link to="/login">Login</Link>
+                            <Link to="/register">Register</Link>
+                        </>
+                    ) : (
+                        user && (
+                            <button onClick={logOut} className="logout-btn">
+                                Log out
+                            </button>
+                        )
+                    )}
+                </div>
             </div>
         </div>
     );

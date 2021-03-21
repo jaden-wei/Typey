@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import UserContext from "../../../context/UserContext";
 
+import "./DataBox.scss";
+
 export default function Data({ updateAverages, averageWpm, averageAccuracy }) {
     const { user } = useContext(UserContext);
 
@@ -11,17 +13,17 @@ export default function Data({ updateAverages, averageWpm, averageAccuracy }) {
     }, [user]);
 
     return (
-        <div>
+        <>
             {user !== null ? (
-                <div className="averageData">
+                <div className="average-data">
                     <p>Average WPM: {averageWpm}</p>
                     <p>Average Accuracy: {averageAccuracy}</p>
                 </div>
             ) : (
-                <div className="averageData">
+                <div className="average-data">
                     <p>Please log in to save data</p>
                 </div>
             )}
-        </div>
+        </>
     );
 }

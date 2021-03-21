@@ -52,7 +52,7 @@ export default function Home() {
 
     return (
         <div className="home">
-            <div className="test-box">
+            <div className="test-container">
                 <TextBox text={text} input={input} />
                 <Input
                     text={text}
@@ -63,7 +63,7 @@ export default function Home() {
                     updateAverages={updateAverages}
                 />
             </div>
-            <div className="data-box">
+            <div className="data-container">
                 <Data
                     updateAverages={updateAverages}
                     averageWpm={averageWpm}

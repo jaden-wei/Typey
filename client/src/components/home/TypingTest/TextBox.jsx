@@ -1,4 +1,5 @@
 import React from "react";
+import "./TestBox.scss";
 
 const TextBox = ({ text, input }) => {
   text = text.split("");

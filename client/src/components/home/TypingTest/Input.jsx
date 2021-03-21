@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState, useRef } from "react";
 import domain from "../../../util/domain";
 
+import "./TestBox.scss";
+
 const Input = ({ text, setText, input, setInput, getNewText, updateAverages }) => {
     const [time, setTime] = useState(0);
     const [status, setStatus] = useState(0);
@@ -51,7 +53,7 @@ const Input = ({ text, setText, input, setInput, getNewText, updateAverages }) =
 
     const resetInput = () => {
         setInput("");
-        setText(getNewText(10));
+        setText(getNewText(30));
         document.getElementById("input-box").value = "";
         clearInterval(interv.current);
         setStatus(0);
