@@ -4,7 +4,14 @@ import domain from "../../../util/domain";
 
 import "./TestBox.scss";
 
-const Input = ({ text, setText, input, setInput, getNewText, updateAverages }) => {
+const Input = ({
+    text,
+    setText,
+    input,
+    setInput,
+    getNewText,
+    updateAverages,
+}) => {
     const [time, setTime] = useState(0);
     const [status, setStatus] = useState(0);
     const interv = useRef(null);
@@ -66,6 +73,11 @@ const Input = ({ text, setText, input, setInput, getNewText, updateAverages }) =
         <div className="input-container">
             <input
                 onChange={inputHandler}
+                onPaste={(e) => {
+                    e.preventDefault();
+                    alert("Stop trying to cheat. I'm watching you.");
+                    return false;
+                }}
                 type="text"
                 autoComplete="off"
                 placeholder="Click here to typing..."

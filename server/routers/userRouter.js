@@ -18,6 +18,13 @@ router.post("/register", async (req, res) => {
                 errorMessage: "Password and confirmation do not match.",
             });
         }
+
+        if (password.length < 8) {
+            return res.status(400).json({
+                errorMessage: "Password must be at least 8 characters long.",
+            });
+        }
+
         const existingUser = await User.findOne({ username });
         if (existingUser) {
             return res.status(400).json({
