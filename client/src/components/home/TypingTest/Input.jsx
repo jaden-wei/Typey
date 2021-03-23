@@ -35,8 +35,6 @@ const Input = ({
         await axios.post(`${domain}/test/`, testData);
 
         await updateUserData();
-
-        console.log("saved new test data");
     };
 
     var seconds = 0;

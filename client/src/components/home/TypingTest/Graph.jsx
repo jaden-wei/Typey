@@ -11,7 +11,6 @@ export default function Graph({ userData }) {
     }, [userData]);
 
     const drawWpmGraph = () => {
-        console.log(defaults);
         let dates = [];
         let wpm = [];
         let total = 0;
