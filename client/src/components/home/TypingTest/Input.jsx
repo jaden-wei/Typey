@@ -10,7 +10,7 @@ const Input = ({
     input,
     setInput,
     getNewText,
-    updateAverages,
+    updateUserData,
 }) => {
     const [time, setTime] = useState(0);
     const [status, setStatus] = useState(0);
@@ -34,7 +34,7 @@ const Input = ({
         };
         await axios.post(`${domain}/test/`, testData);
 
-        await updateAverages();
+        await updateUserData();
 
         console.log("saved new test data");
     };
@@ -60,7 +60,7 @@ const Input = ({
 
     const resetInput = () => {
         setInput("");
-        setText(getNewText(50));
+        setText(getNewText(30));
         document.getElementById("input-box").value = "";
         clearInterval(interv.current);
         setStatus(0);

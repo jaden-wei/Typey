@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import domain from "../../util/domain";
 
@@ -10,12 +10,22 @@ import UserContext from "../../context/UserContext";
 import "./Home.scss";
 
 export default function Home() {
-    const [averageWpm, setAverageWpm] = useState();
-    const [averageAccuracy, setAverageAccuracy] = useState();
+    const [userData, setUserData] = useState([]);
 
     const { user } = useContext(UserContext);
 
     const wordlist = require("../../wordlist.json");
+
+    useEffect(() => {
+        if (!user) {
+            setUserData([]);
+        } else updateUserData();
+    }, [user]);
+
+    const updateUserData = async () => {
+        const res = await axios.get(`${domain}/test`);
+        setUserData(res.data);
+    };
 
     const getNewText = (count) => {
         let str = "";
@@ -26,26 +36,7 @@ export default function Home() {
         return str;
     };
 
-    const updateAverages = async () => {
-        if (!user) {
-            setAverageWpm("Please login to use this feature");
-            setAverageAccuracy("Please login to use this feature");
-        }
-        const allTests = await (await axios.get(`${domain}/test`)).data;
-
-        let totalWpm = 0;
-        let totalAccuracy = 0;
-        for (let testIndex = 0; testIndex < allTests.length; testIndex++) {
-            totalWpm += allTests[testIndex].wpm;
-            totalAccuracy += allTests[testIndex].accuracy;
-        }
-        setAverageWpm(Math.round((totalWpm * 10) / allTests.length) / 10);
-        setAverageAccuracy(
-            Math.round((totalAccuracy * 10) / allTests.length) / 10
-        );
-    };
-
-    const [text, setText] = useState(getNewText(50));
+    const [text, setText] = useState(getNewText(30));
 
     //use states
     const [input, setInput] = useState("");
@@ -60,14 +51,13 @@ export default function Home() {
                     input={input}
                     setInput={setInput}
                     getNewText={getNewText}
-                    updateAverages={updateAverages}
+                    updateUserData={updateUserData}
                 />
             </div>
             <div className="data-container">
                 <Data
-                    updateAverages={updateAverages}
-                    averageWpm={averageWpm}
-                    averageAccuracy={averageAccuracy}
+                    userData={userData}
+                    updateAverages={updateUserData}
                 />
             </div>
         </div>

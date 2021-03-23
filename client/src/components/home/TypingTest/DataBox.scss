@@ -1,6 +1,7 @@
 .data-container {
     width: 80%;
     margin-top: 3vh;
+    margin-bottom: 5vh;
     background: rgb(240, 240, 240);
 
     border-radius: 5px;
@@ -15,9 +16,20 @@
     0 16px 16px rgba(0,0,0,0.12);
 
     .average-data {
-        width: 80%;
-        padding: 2vh;
+        width: 100%;
         display: flex;
         justify-content: space-around;
+        align-items: center;
+
+        div {
+            width: 100%;
+            padding-bottom: 2vh;
+        }
+
+        .graph-container {
+            margin: auto;
+            width: 80%;
+        }
     }
+    
 }
